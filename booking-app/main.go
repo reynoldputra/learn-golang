@@ -2,6 +2,7 @@ package main
 
 import (
 	"booking-app/helper"
+  "booking-app/models"
 	"fmt"
 )
 
@@ -10,18 +11,11 @@ func main() {
 	const conferenceTikcets int = 50
 	var remainingTickets uint = 50
 
-	type UserData struct {
-	  firstName string 
-	  lastName string
-	  email string
-	  numberOfTickets uint
-	}
-
 	fmt.Printf("Welcome to %v booking application\n", conferenceName)
 	fmt.Printf("We have total of %v tickets and %v are still available\n", conferenceTikcets, remainingTickets)
 	fmt.Printf("Get your tickets here to attend\n")
 
-	var bookings = make([]UserData, 0)
+	bookings := make([]models.UserData, 0)
 
 	for {
 		var firstName string
@@ -38,11 +32,11 @@ func main() {
 		fmt.Printf("Enter number of tickets: ")
 		fmt.Scan(&userTickets)
 
-    var userData UserData		
-    userData.firstName = firstName
-    userData.lastName = lastName
-    userData.email = email
-    userData.numberOfTickets = userTickets
+		var userData models.UserData
+		userData.FirstName = firstName
+		userData.LastName = lastName
+		userData.Email = email
+		userData.NumberOfTickets = userTickets
 
 		if userTickets > remainingTickets {
 			fmt.Printf("We only have %v tickets\n", remainingTickets)
@@ -63,4 +57,3 @@ func main() {
 		}
 	}
 }
-

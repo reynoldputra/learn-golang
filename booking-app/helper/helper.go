@@ -1,9 +1,11 @@
 package helper
 
-func GetFirstName(bookings []map[string]string) []string {
+import "booking-app/models"
+
+func GetFirstName(bookings []models.UserData) []string {
 	firstNames := []string{}
-	for _, name := range bookings {
-		var first = name["firstName"]
+	for _, booking := range bookings {
+		var first = booking.FirstName
 		firstNames = append(firstNames, first)
 	}
 
